@@ -6,6 +6,7 @@
         height="23px"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
+        @click="goback"
       >
         <polyline
           data-v-cec0c0c0
@@ -19,7 +20,11 @@
 
 <script>
 export default {
- 
+  methods:{
+    goback(){
+      this.$router.go(-1);
+    }
+  }
 }
 </script>
 
@@ -42,10 +47,10 @@ header {
   align-items: center;
 }
 header p {
-  width: 50%;
+  width: 90%;
   flex-shrink: 0;
   color: #fff;
-  text-align: right;
+  text-align:center;
   font-size: 20px;
   font-weight: bold;
 }

@@ -156,7 +156,7 @@
           </span>
         </div>
       </a>
-      <router-link to="vipcard" class="myorder">
+      <router-link to="my/vipcard" class="myorder">
         <aside data-v-0fc4ab7a>
           <svg data-v-0fc4ab7a fill="#ffc636">
             <use data-v-0fc4ab7a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#vip"></use>
@@ -189,7 +189,7 @@
     </div>
 
     <div class="profile-1reTe">
-      <router-link to="service" class="myorder">
+      <router-link to="my/service" class="myorder">
         <aside data-v-0fc4ab7a>
           <svg data-v-0fc4ab7a fill="#4aa5f0">
             <use data-v-0fc4ab7a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#service"></use>
@@ -227,7 +227,7 @@
         </div>
       </router-link>
 
-      <router-link to="download" class="myorder">
+      <router-link to="my/download" class="myorder">
         <aside data-v-0fc4ab7a>
           <svg data-v-0fc4ab7a fill="#3cabff">
             <use data-v-0fc4ab7a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#download"></use>

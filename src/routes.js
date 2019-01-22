@@ -20,5 +20,9 @@ export default [
         component:()=>import('./components/my/mydownload')
       }
     ]
+  },
+  {
+    path:'/login',
+    component:()=>import('./views/login')
   }
 ]
