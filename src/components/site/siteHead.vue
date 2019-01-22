@@ -4,27 +4,33 @@
             <i class="el-icon-arrow-left"></i>
             <span>城市选择</span>
         </div>
-        <div class="header-serach">
-            <!-- <el-input v-model="input" placeholder="请输入内容" class="ipt"></el-input> -->
+        <!-- <div class="header-serach">
             <input type="text" class="ipt" v-model="input" placeholder="请输入城市名">
             <i class="el-icon-search"></i>
+        </div> -->
+        <div class="site-city">当前定位城市：<span>{{guesscity}}</span></div>
+        <div class="hot-city">
+            <div class="hot-head">
+
+            </div>
         </div>
-        <div class="site-city">当前定位城市：<span>郑州</span></div>
     </div>
 </template>
 
 <script>
-    import axios from "../../axios"
 export default {
     data(){
         return {
             input:""
         }
     },
+    computed:{
+        guesscity(){
+            return this.$store.state.city.guesscity;
+        }
+    },
     created(){
-        axios.get("/v1/cities?type=guess").then(res=>{
-            console.log(res)
-        })
+        this.$store.dispatch("city/getguess");
     }
 }
 </script>
@@ -85,5 +91,8 @@ export default {
     }
     .site-city span{
         color:#0085ff;
+    }
+    .hot-city{
+        width: 100%;
     }
 </style>
