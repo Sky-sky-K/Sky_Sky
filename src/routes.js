@@ -1,4 +1,6 @@
 export default [
+
+  // l----路由
   {
     path:'/my',
     component:()=>import("./views/my"),
@@ -24,5 +26,14 @@ export default [
   {
     path:'/login',
     component:()=>import('./views/login')
+  },
+  {
+    path:"/mybalance",
+    component:()=>import("./components/my/mybalance")
+  },
+  {
+    path:"/mypoint",
+    component:()=>import("./components/my/mypoint")
   }
+  // l----路由结束
 ]

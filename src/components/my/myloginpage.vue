@@ -1,6 +1,8 @@
 <template>
   <div class="my">
-    <myheader><p slot='myheader'>我的</p></myheader>
+    <myheader>
+      <p slot="myheader">我的</p>
+    </myheader>
     <div class="login">
       <router-link to="/login" class="loginto">
         <svg v-if="!userinfo.avatar" data-v-0fc4ab7a class="privateImage-svg">
@@ -18,7 +20,7 @@
             </svg>
           </use>
         </svg>
-        <img width="59" height="59" v-else :src="'http://elm.cangdu.org/img/'+userinfo.avatar" alt="">
+        <img width="59" height="59" v-else :src="'http://elm.cangdu.org/img/'+userinfo.avatar" alt>
         <div class="login-info">
           <p v-if="!userinfo.username">登录/注册</p>
           <p v-else>{{userinfo.username}}</p>
@@ -63,74 +65,78 @@
     <div class="info-data">
       <ul>
         <li>
-          <span>
-            <b>0.00</b>元
-          </span>
-          <span>我的余额</span>
+          <router-link to="/mybalance">
+            <span>
+              <b>{{usernum.balance%1==0?usernum.balance+".00":usernum.balance}}</b>元
+            </span>
+            <span>我的余额</span>
+          </router-link>
         </li>
         <li>
-          <span>
-            <b>{{gift_amount}}</b>个
-          </span>
-          <span>我的优惠</span>
+            <span>
+              <b>{{usernum.gift_amount}}</b>个
+            </span>
+            <span>我的优惠</span>
         </li>
         <li>
+          <router-link to="/mypoint">
           <span>
-            <b>0</b>分
+            <b>{{usernum.point}}</b>分
           </span>
           <span>我的积分</span>
+          </router-link>
         </li>
       </ul>
     </div>
 
     <div class="profile-1reTe">
       <router-link to="/order" class="myorder">
-          <aside data-v-0fc4ab7a>
-            <svg data-v-0fc4ab7a fill="#4aa5f0">
-              <use data-v-0fc4ab7a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#order"></use>
-            </svg>
-          </aside>
-          <div data-v-0fc4ab7a class="myorder-div">
-            <span data-v-0fc4ab7a>我的订单</span>
-            <span data-v-0fc4ab7a class="myorder-divsvg">
-              <svg data-v-0fc4ab7a fill="#bbb">
-                <use
-                  data-v-0fc4ab7a
+        <aside data-v-0fc4ab7a>
+          <svg data-v-0fc4ab7a fill="#4aa5f0">
+            <use data-v-0fc4ab7a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#order"></use>
+          </svg>
+        </aside>
+        <div data-v-0fc4ab7a class="myorder-div">
+          <span data-v-0fc4ab7a>我的订单</span>
+          <span data-v-0fc4ab7a class="myorder-divsvg">
+            <svg data-v-0fc4ab7a fill="#bbb">
+              <use
+                data-v-0fc4ab7a
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xlink:href="#arrow-right"
+              >
+                <svg
+                  data-v-617269a8
                   xmlns:xlink="http://www.w3.org/1999/xlink"
-                  xlink:href="#arrow-right"
+                  viewBox="0 0 38 38"
+                  id="order"
+                  width="100%"
+                  height="100%"
                 >
-                  <svg
-                    data-v-617269a8
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                    viewBox="0 0 38 38"
-                    id="order"
-                    width="100%"
-                    height="100%"
-                  >
-                    <g data-v-617269a8 fill="none" fill-rule="evenodd">
-                      <g
+                  <g data-v-617269a8 fill="none" fill-rule="evenodd">
+                    <g
+                      data-v-617269a8
+                      stroke="#666"
+                      stroke-width="4"
+                      mask="url(#order-regular.41c17f8_b)"
+                    >
+                      <rect
                         data-v-617269a8
-                        stroke="#666"
-                        stroke-width="4"
-                        mask="url(#order-regular.41c17f8_b)"
-                      >
-                        <rect
-                          data-v-617269a8
-                          id="order-regular.41c17f8_a"
-                          width="38"
-                          height="38"
-                          rx="2"
-                        ></rect>
-                      </g>
-                      <rect data-v-617269a8 width="24" height="2" x="7" y="8" fill="#666" rx="1"></rect>
-                      <rect data-v-617269a8 width="20" height="2" x="7" y="17" fill="#666" rx="1"></rect>
-                      <rect data-v-617269a8 width="8" height="2" x="7" y="26" fill="#666" rx="1"></rect>
+                        id="order-regular.41c17f8_a"
+                        width="38"
+                        height="38"
+                        rx="2"
+                      ></rect>
                     </g>
-                  </svg>
-                </use>
-              </svg>
-            </span>
-          </div>
+                    <rect data-v-617269a8 width="24" height="2" x="7" y="8" fill="#666" rx="1"></rect>
+                    <rect data-v-617269a8 width="20" height="2" x="7" y="17" fill="#666" rx="1"></rect>
+                    <rect data-v-617269a8 width="8" height="2" x="7" y="26" fill="#666" rx="1"></rect>
+                  </g>
+                </svg>
+              </use>
+            </svg>
+          </span>
+        </div>
       </router-link>
 
       <a href="https://home.m.duiba.com.cn/#/chome/index" class="myorder">
@@ -259,23 +265,25 @@
 </template>
 
 <script>
-import myheader from './myheader'
+import myheader from "./myheader";
 export default {
-  components:{
+  components: {
     myheader
   },
-  computed:{
-    userinfo(){
+  computed: {
+    userinfo() {
       return this.$store.state.login.userinfo;
     },
-    gift_amount(){
-      return this.$store.state.login.userinfo?this.$store.state.login.userinfo.gift_amount:0;
+    usernum() {
+      return this.$store.state.login.userinfo
+        ? this.$store.state.login.userinfo
+        : 0;
     }
   },
-  created(){
-    this.$store.dispatch("login/loginuser")
+  created() {
+    this.$store.dispatch("login/loginuser");
   }
-}
+};
 </script>
 
 <style scoped>
