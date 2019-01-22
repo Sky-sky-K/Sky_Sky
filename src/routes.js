@@ -1,6 +1,8 @@
+import site from "./views/site"
 export default [
   {
-    path:"/shop",
-    component:() => import('./views/Shop')
+    path:"/",
+    component:site
   }
+  
 ]
