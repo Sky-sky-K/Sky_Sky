@@ -5,13 +5,13 @@
     </myheader>
     <div class="login">
       <div class="loginipt login-user">
-        <input type="text" placeholder="账号" :value="user.user" @input="iptuser">
+        <input type="text" placeholder="账号" :value="user.username" @input="iptuser">
       </div>
       <div class="loginipt login-pwd">
-        <input type="password" placeholder="密码" :value="user.pwd" @input="iptpwd">
+        <input type="password" placeholder="密码" :value="user.password" @input="iptpwd">
       </div>
       <div class="loginipt login-code">
-        <input type="text" placeholder="验证码">
+        <input type="text" placeholder="验证码" :value="user.captcha_code" @input="iptcode">
         <div class="code">
           <div class="code-img">
             <img :src="code.url" alt>
@@ -27,7 +27,7 @@
         <p>注册过的用户可凭账号密码登录</p>
       </div>
       <div class="btn">
-        <el-button type="success">登录</el-button>
+        <el-button type="success" @click="loginto">登录</el-button>
       </div>
       <div class="resetpwd">
         <router-link to="/resetpwd">重置密码?</router-link>
@@ -58,14 +58,32 @@ export default {
   methods:{
     iptuser(val){
       const v=val.target.value;
-      this.$store.commit("login/iptchange",{user:v})
+      this.$store.commit("login/iptchange",{username:v})
     },
     iptpwd(val){
       const v=val.target.value;
-      this.$store.commit("login/iptchange",{pwd:v})
+      this.$store.commit("login/iptchange",{password:v})
+    },
+    iptcode(val){
+      const v=val.target.value;
+      this.$store.commit("login/iptchange",{captcha_code:v})
     },
     changecode(){
       this.$store.dispatch("login/getcode")
+    },
+    loginto(){
+      this.$store.dispatch("login/loginto").then((res)=>{
+        if(res.data.status==0){
+          this.$createDialog({
+            type:"alert",
+            icon:"cubeic-alert",
+            showClose:true,
+            title:res.data.message
+          }).show()
+        }else{
+          this.$router.replace('/my');
+        }
+      })
     }
   },
   components: {

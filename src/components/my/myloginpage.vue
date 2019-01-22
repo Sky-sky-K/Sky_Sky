@@ -3,7 +3,7 @@
     <myheader><p slot='myheader'>我的</p></myheader>
     <div class="login">
       <router-link to="/login" class="loginto">
-        <svg data-v-0fc4ab7a class="privateImage-svg">
+        <svg v-if="!userinfo.avatar" data-v-0fc4ab7a class="privateImage-svg">
           <use
             data-v-0fc4ab7a
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -18,8 +18,10 @@
             </svg>
           </use>
         </svg>
+        <img width="59" height="59" v-else :src="'http://elm.cangdu.org/img/'+userinfo.avatar" alt="">
         <div class="login-info">
-          <p>登录/注册</p>
+          <p v-if="!userinfo.username">登录/注册</p>
+          <p v-else>{{userinfo.username}}</p>
           <p>
             <span class="user-info">
               <svg data-v-0fc4ab7a fill="#fff" class="icon-mobile">
@@ -68,7 +70,7 @@
         </li>
         <li>
           <span>
-            <b>0</b>个
+            <b>{{gift_amount}}</b>个
           </span>
           <span>我的优惠</span>
         </li>
@@ -261,6 +263,17 @@ import myheader from './myheader'
 export default {
   components:{
     myheader
+  },
+  computed:{
+    userinfo(){
+      return this.$store.state.login.userinfo;
+    },
+    gift_amount(){
+      return this.$store.state.login.userinfo?this.$store.state.login.userinfo.gift_amount:0;
+    }
+  },
+  created(){
+    this.$store.dispatch("login/loginuser")
   }
 }
 </script>

@@ -3,22 +3,41 @@ export default {
   namespaced:true,
   state:{
     user:{
-      user:"",
-      pwd:""
+      username:"ljl",
+      password:"123456",
+      captcha_code:null
     },
     code:{
       url:"",
       num:null
-    }
+    },
+    userinfo:{}
   },
   actions:{
     getcode({commit,state}){
       return new Promise((resolve,reject)=>{
-        axios.post('http://ele.kassing.cn/v1/captchas').then(res=>{
-          console.log(res)
+        axios.post('/v1/captchas').then(res=>{
           commit("getcode",res.data)
         })
       })
+    },
+    loginto({commit,state}){
+      return new Promise((resolve,reject)=>{
+        axios.post('/v2/login',state.user).then(res=>{
+          resolve(res);
+          localStorage.setItem("user_id",res.data.id)
+        })
+      })
+    },
+    loginuser({commit}){
+      const user_id=localStorage.getItem("user_id")
+      if(user_id){
+        return new Promise((resolve,reject)=>{
+          axios.get("/v1/user?user_id="+user_id).then(res=>{
+            commit("loginuser",res.data)
+          })
+        })
+      }
     }
   },
   mutations:{
@@ -27,6 +46,9 @@ export default {
     },
     getcode(state,code){
       state.code.url=code.code;
+    },
+    loginuser(state,info){
+      state.userinfo=info;
     }
   }
 }
