@@ -19,7 +19,9 @@
           </header>
           <div class="balance">
             <p>
-              <span>{{usernum.balance%1==0?usernum.balance+".00":usernum.balance}}</span>元
+              <span v-if="isLogin">{{usernum.balance%1==0?usernum.balance+".00":usernum.balance}}</span>
+              <span v-else>0.00</span>
+              元
             </p>
           </div>
           <div class="btn">
@@ -56,6 +58,9 @@ export default {
       return this.$store.state.login.userinfo
         ? this.$store.state.login.userinfo
         : 0;
+    },
+    isLogin() {
+      return localStorage.getItem("user_id");
     }
   },
   created() {

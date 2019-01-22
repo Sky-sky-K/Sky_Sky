@@ -19,7 +19,9 @@
           </header>
           <div class="balance">
             <p>
-              <span>{{usernum.point%1==0?usernum.point+".00":usernum.point}}</span>元
+              <span v-if="isLogin">{{usernum.point%1==0?usernum.point+".00":usernum.point}}</span>
+              <span v-else>0</span>
+              分
             </p>
           </div>
           <div class="btn">
@@ -56,6 +58,9 @@ export default {
       return this.$store.state.login.userinfo
         ? this.$store.state.login.userinfo
         : 0;
+    },
+    isLogin() {
+      return localStorage.getItem("user_id");
     }
   },
   created() {

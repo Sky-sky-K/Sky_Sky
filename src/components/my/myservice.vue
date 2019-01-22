@@ -1,7 +1,9 @@
 <template>
   <div>
     <myheader><p slot="myheader">服务中心</p></myheader>
-    
+    <div class="myservice">
+      
+    </div>
   </div>
 </template>
 
@@ -14,6 +16,16 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.myservice {
+  padding-top: 44px;
+  width: 100vw;
+  height: 100vh;
+  background: #f5f5f5;
+}
 </style>

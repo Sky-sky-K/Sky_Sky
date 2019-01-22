@@ -67,23 +67,29 @@
         <li>
           <router-link to="/mybalance">
             <span>
-              <b>{{usernum.balance%1==0?usernum.balance+".00":usernum.balance}}</b>元
+              <b v-if="isLogin">{{usernum.balance%1==0?usernum.balance+".00":usernum.balance}}</b>
+              <b v-else>0.00</b>
+              元
             </span>
             <span>我的余额</span>
           </router-link>
         </li>
         <li>
-            <span>
-              <b>{{usernum.gift_amount}}</b>个
-            </span>
-            <span>我的优惠</span>
+          <span>
+            <b v-if="isLogin">{{usernum.gift_amount}}</b>
+            <b v-else>0</b>
+            个
+          </span>
+          <span>我的优惠</span>
         </li>
         <li>
           <router-link to="/mypoint">
-          <span>
-            <b>{{usernum.point}}</b>分
-          </span>
-          <span>我的积分</span>
+            <span>
+              <b v-if="isLogin">{{usernum.point}}</b>
+              <b v-else>0</b>
+              分
+            </span>
+            <span>我的积分</span>
           </router-link>
         </li>
       </ul>
@@ -165,34 +171,34 @@
         </div>
       </a>
       <router-link to="my/vipcard" class="myorder">
-        <aside data-v-0fc4ab7a>
-          <svg data-v-0fc4ab7a fill="#ffc636">
-            <use data-v-0fc4ab7a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#vip"></use>
-          </svg>
-        </aside>
-        <div data-v-0fc4ab7a class="myorder-div">
-          <span data-v-0fc4ab7a>饿了么会员卡</span>
-          <span data-v-0fc4ab7a class="myorder-divsvg">
-            <svg data-v-0fc4ab7a fill="#bbb">
-              <use
-                data-v-0fc4ab7a
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                xlink:href="#arrow-right"
-              >
-                <svg viewBox="0 0 40 40" id="vip" width="100%" height="100%">
-                  <path d="M7 33.4c0 1.1.9 1.6 2 1.6h22c1.1 0 2-.5 2-1.6V31H7v2.4z"></path>
-                  <path
-                    d="M32.1 14.3c-.6 2.3-2.6 4-5.1 4-2.9 0-5.3-2.3-5.3-5.2v-.2c-.5.2-1 .3-1.6.3-.6 0-1.1-.1-1.7-.3v.2c0 2.9-2.4 5.2-5.3 5.2-2.5 0-4.6-1.7-5.1-4.1-.5.4-1.2.6-1.8.6-.3 0-.5.1-.8 0L7.2 29h26l1.7-14.2c-.3.1-.5.1-.8.1-.8 0-1.5-.2-2-.6z"
-                    class="st0"
-                  ></path>
-                  <ellipse cx="20.1" cy="8.2" rx="3.2" ry="3.2"></ellipse>
-                  <ellipse cx="6.4" cy="10.5" rx="2.4" ry="2.4"></ellipse>
-                  <ellipse cx="33.8" cy="10.5" rx="2.4" ry="2.4"></ellipse>
-                </svg>
-              </use>
+          <aside data-v-0fc4ab7a>
+            <svg data-v-0fc4ab7a fill="#ffc636">
+              <use data-v-0fc4ab7a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#vip"></use>
             </svg>
-          </span>
-        </div>
+          </aside>
+          <div data-v-0fc4ab7a class="myorder-div">
+            <span data-v-0fc4ab7a>饿了么会员卡</span>
+            <span data-v-0fc4ab7a class="myorder-divsvg">
+              <svg data-v-0fc4ab7a fill="#bbb">
+                <use
+                  data-v-0fc4ab7a
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="#arrow-right"
+                >
+                  <svg viewBox="0 0 40 40" id="vip" width="100%" height="100%">
+                    <path d="M7 33.4c0 1.1.9 1.6 2 1.6h22c1.1 0 2-.5 2-1.6V31H7v2.4z"></path>
+                    <path
+                      d="M32.1 14.3c-.6 2.3-2.6 4-5.1 4-2.9 0-5.3-2.3-5.3-5.2v-.2c-.5.2-1 .3-1.6.3-.6 0-1.1-.1-1.7-.3v.2c0 2.9-2.4 5.2-5.3 5.2-2.5 0-4.6-1.7-5.1-4.1-.5.4-1.2.6-1.8.6-.3 0-.5.1-.8 0L7.2 29h26l1.7-14.2c-.3.1-.5.1-.8.1-.8 0-1.5-.2-2-.6z"
+                      class="st0"
+                    ></path>
+                    <ellipse cx="20.1" cy="8.2" rx="3.2" ry="3.2"></ellipse>
+                    <ellipse cx="6.4" cy="10.5" rx="2.4" ry="2.4"></ellipse>
+                    <ellipse cx="33.8" cy="10.5" rx="2.4" ry="2.4"></ellipse>
+                  </svg>
+                </use>
+              </svg>
+            </span>
+          </div>
       </router-link>
     </div>
 
@@ -278,6 +284,9 @@ export default {
       return this.$store.state.login.userinfo
         ? this.$store.state.login.userinfo
         : 0;
+    },
+    isLogin() {
+      return localStorage.getItem("user_id");
     }
   },
   created() {
