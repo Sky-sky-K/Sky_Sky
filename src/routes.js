@@ -1,6 +1,24 @@
 export default [
   {
     path:'/my',
-    component:()=>import("./views/my")
+    component:()=>import("./views/my"),
+    children:[
+      {
+        path:"",
+        component:()=>import('./components/my/myloginpage')
+      },
+      {
+        path:'vipcard',
+        component:()=>import('./components/my/myvipcard')
+      },
+      {
+        path:'service',
+        component:()=>import('./components/my/myservice')
+      },
+      {
+        path:'download',
+        component:()=>import('./components/my/mydownload')
+      }
+    ]
   }
 ]
