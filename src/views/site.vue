@@ -1,12 +1,12 @@
 <template>
-    <siteHead></siteHead>
+    <siteCity></siteCity>
 </template>
 
 <script>
-import siteHead from "../components/site/siteHead"
+import siteCity from "../components/site/siteCity"
 export default {
     components:{
-        siteHead
+        siteCity
     }
 }
 </script>
