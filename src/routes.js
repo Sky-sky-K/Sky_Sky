@@ -34,6 +34,10 @@ export default [
   {
     path:"/mypoint",
     component:()=>import("./components/my/mypoint")
+  },
+  {
+    path:"/myservicelist",
+    component:()=>import("./components/my/myservicelist")
   }
   // l----路由结束
 ]

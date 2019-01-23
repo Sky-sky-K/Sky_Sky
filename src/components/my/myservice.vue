@@ -27,8 +27,8 @@
       <div class="hot_questions">
         <h4 class="questions_header">热门话题</h4>
         <ul v-for="(item,index) in list" :key="index">
-          <li class="question_title">
-            <span>超级会员权益说明</span>
+          <li class="question_title" @click="tolist(item)">
+            <span>{{item[1]}}</span>
             <svg fill="#999" viewBox="0 0 1024 1024" id="arrow-right" class="icon" width="14" height="14">
               <path
                 d="M716.298 417.341l-.01.01L307.702 7.23l-94.295 94.649 408.591 410.117-408.591 410.137 94.295 94.639 502.891-504.76z"
@@ -58,17 +58,27 @@ export default {
   },
   methods:{
     changelist(val){
-      const listarr=[],filterarr=[];
+      const listarr=[],filterarr=[],list=[];
       if(val){
         for(let i in val){
           filterarr.push({name:i,val:val[i]})
         }
         const listarr=filterarr.filter(val=>val.name!='index')
-        for(let j=0;j<listarr.length;j++){
-          console.log(i)
+        for(let j=0;j<listarr.length/2;j++){
+          const z1=[]
+          for(let a=0;a<2;a++){
+            const c=a+j*2;
+            z1.push(listarr[c].val)
+          }
+          list.push(z1);
         }
-        // console.log(listarr)
+        // console.log(list)
+          return list
       }
+    },
+    tolist(item){
+      this.$store.commit("myservice/tolist",item);
+      this.$router.push("/myservicelist")
     }
   }
 };
