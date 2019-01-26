@@ -1,6 +1,12 @@
 import site from "./views/site"
 import city from "./views/city"
+import Index from './views/Index'
 export default [
+  {
+    path: '/',
+    name: 'Index',
+    component: Index
+  },
   // l----路由
   {
     path:'/my',
