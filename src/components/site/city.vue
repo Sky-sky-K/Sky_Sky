@@ -54,6 +54,7 @@ export default {
         //     // this.$store.dispatch("city/getgeohash",i);
         // })
         this.loading=true;
+        // console.log(localStorage.getItem("Id"))
         this.city.city_id=localStorage.getItem("Id");
         console.log(this.city.city_id);
         this.$store.dispatch("city/getcityname",this.city.city_id).then(()=>{

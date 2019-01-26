@@ -85,8 +85,9 @@ export default {
             this.$router.push("/city")
         },
         gethotId(id){
-            // console.log(id)
-            this.$router.push("/city")
+            console.log(id)
+            localStorage.setItem("Id",id);
+            this.$router.push("/city");
         },
         getcity(type){
             this.loading=true;
