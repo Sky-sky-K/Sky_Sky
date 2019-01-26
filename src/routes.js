@@ -1,3 +1,5 @@
+import site from "./views/site"
+import city from "./views/city"
 export default [
   {
     path:"/shop",
@@ -42,6 +44,15 @@ export default [
   {
     path:"/myservicelist",
     component:()=>import("./components/my/myservicelist")
-  }
+  },
   // l----路由结束
+  {
+    path:"/",
+    component:site
+  },
+  {
+    path:'/city',
+    component:city
+  }
+  
 ]
