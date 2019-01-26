@@ -4,7 +4,7 @@
       <p slot="myheader">我的</p>
     </myheader>
     <div class="login">
-      <router-link to="/login" class="loginto">
+      <div class="loginto">
         <svg v-if="!userinfo.avatar" data-v-0fc4ab7a class="privateImage-svg">
           <use
             data-v-0fc4ab7a
@@ -21,7 +21,7 @@
           </use>
         </svg>
         <img width="59" height="59" v-else :src="'http://elm.cangdu.org/img/'+userinfo.avatar" alt>
-        <div class="login-info">
+        <div class="login-info" @click="loginInfo">
           <p v-if="!userinfo.username">登录/注册</p>
           <p v-else>{{userinfo.username}}</p>
           <p>
@@ -59,7 +59,7 @@
             </use>
           </svg>
         </span>
-      </router-link>
+      </div>
     </div>
 
     <div class="info-data">
@@ -291,6 +291,15 @@ export default {
   },
   created() {
     this.$store.dispatch("login/loginuser");
+  },
+  methods:{
+    loginInfo () {
+      if (!localStorage.getItem("user_id")) {
+        this.$router.push("/login")
+      }else {
+        this.$router.push("/my/info")
+      }
+    }
   }
 };
 </script>

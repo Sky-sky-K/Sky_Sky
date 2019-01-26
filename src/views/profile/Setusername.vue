@@ -31,13 +31,13 @@ export default {
     },
     methods:{
         submit () {
-            this.$router.push("/profile/info")
+            this.$router.push("/my/info")
             if(this.username) {
                 this.$store.commit("shops_list/setusername",this.username)
             }
         },
         next () {
-            this.$router.push("/profile/info")
+            this.$router.push("/my/info")
         }
     },
     computed:mapState({

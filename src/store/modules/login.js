@@ -49,6 +49,9 @@ export default {
     },
     loginuser(state,info){
       state.userinfo=info;
+    },
+    removeuser (state) {
+      state.userinfo={}
     }
   }
 }

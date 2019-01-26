@@ -41,10 +41,10 @@ export default {
         },
         getname (type) {
             this.$store.commit("shops_list/setname",type)
-            this.$router.push("/profile/info/address/add")
+            this.$router.push("/my/info/address/add")
         },
         next () {
-            this.$router.push("/profile/info/address/add")
+            this.$router.push("/my/info/address/add")
         }
     },
     computed:mapState({

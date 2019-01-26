@@ -13,7 +13,7 @@
           <i class="cubeic-arrow"></i>
         </div>
       </div>
-      <router-link class="info-router" to="/profile/info/setusername">
+      <router-link class="info-router" to="/my/info/setusername">
         <div class="headportrait">
           <span>用户名</span>
           <div class="headportrait-div">
@@ -22,7 +22,7 @@
           </div>
         </div>
       </router-link>
-      <router-link class="info-router" to="/profile/info/address">
+      <router-link class="info-router" to="/my/info/address">
         <div class="headportrait headportrait_bot">
           <span>收货地址</span>
           <div class="headportrait-div">
@@ -65,7 +65,7 @@ export default {
   },
   methods: {
     next() {
-      this.$router.push("/profile");
+      this.$router.push("/my");
     },
     phone() {
       this.$createDialog({
@@ -93,9 +93,10 @@ export default {
           href: 'javascript:;'
         },
         onConfirm: () => {
+          this.$store.commit("login/removeuser")
           this.$store.dispatch("shops_list/exitlogin").then(() => {
             localStorage.removeItem("user_id")
-            this.$router.push("/profile")
+            this.$router.push("/my")
           })
         }
       }).show()

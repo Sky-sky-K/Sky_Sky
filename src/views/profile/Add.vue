@@ -16,7 +16,7 @@
           >
           <p v-show="!message.name1" v-if="flag">请填写您的姓名</p>
         </div>
-        <router-link to="/profile/info/address/add/addDetail" class="add-detail">
+        <router-link to="/my/info/address/add/addDetail" class="add-detail">
           <div class="input-new">
             <input type="text" placeholder="小区/写字楼/学校等" :value="address_detail.name">
           </div>
@@ -87,12 +87,12 @@ export default {
           ...this.address_detail
         })
         .then(() => {
-          this.$router.push("/profile/info/address");
+          this.$router.push("/my/info/address");
           this.address_detail.name = "";
         });
     },
     next() {
-      this.$router.push("/profile/info/address");
+      this.$router.push("/my/info/address");
     },
     changename() {
       this.flag = true;

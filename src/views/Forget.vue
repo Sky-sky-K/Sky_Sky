@@ -50,7 +50,7 @@ export default {
     },
     methods:{
         prev () {
-            this.$router.push("/profile/info")
+            this.$router.push("/my/info")
         },
         getcode () {
              this.$store.dispatch("shops_list/getCode")
@@ -64,7 +64,7 @@ export default {
                 if (res.status==0) {
                     alert(res.message)
                 }else {
-                    this.$router.push("/profile/info")
+                    this.$router.push("/my/info")
                 }
             })
         }

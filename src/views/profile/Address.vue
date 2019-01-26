@@ -20,7 +20,7 @@
           </span>
         </li>
       </ul>
-      <router-link to="/profile/info/address/add">
+      <router-link to="/my/info/address/add">
         <div class="addsite">
           <span>新增地址</span>
           <span>
@@ -50,7 +50,7 @@ export default {
       this.$store.dispatch("shops_list/removeAddr", { id, index });
     },
     prev() {
-      this.$router.push("/profile/info");
+      this.$router.push("/my/info");
     }
   },
   created() {
