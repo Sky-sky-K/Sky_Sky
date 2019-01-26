@@ -55,7 +55,7 @@ export default{
         getcityname({commit},i){
             return new Promise((resolve,reject)=>{
                 axios.get("/v1/cities/"+i).then(res=>{
-                    console.log(res)
+                    // console.log(res)
                     //获取所选城市的名字
                     commit("cityname",res.data.name);
                     resolve();

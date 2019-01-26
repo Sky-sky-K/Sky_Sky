@@ -79,13 +79,13 @@ export default {
         },
         selectItem(item) {
             //点击获取id
-            console.log(item.id)
+            // console.log(item.id)
             // bus.$emit("select",item.id)
             localStorage.setItem("Id",item.id);
             this.$router.push("/city")
         },
         gethotId(id){
-            console.log(id)
+            // console.log(id)
             localStorage.setItem("Id",id);
             this.$router.push("/city");
         },

@@ -6,7 +6,7 @@
         </div>
         <input type="text" class="ipt" placeholder="请输入学校、商务楼、地址" v-model="city.keyword">
         <p class="btn" @click="btn">搜索</p>
-        <div class="list" v-for="item in serachcity" :key="item.id">
+        <div class="list" v-for="item in serachcity" :key="item.id" @click="zuobiao(item.geohash)">
             <span class="list-name">{{item.name}}</span>
             <span class="list-addr">{{item.address}}</span>
         </div>
@@ -30,18 +30,23 @@ export default {
             return this.$store.state.city.cityname;
         },
         serachcity(){
-            return this.$store.state.city.serachcity
+            return this.$store.state.city.serachcity;
         }
     },
     methods:{
         btn(){
             if(this.city.keyword!=""){
-            //    console.log(this.city);
+               console.log(this.city);
                this.$store.dispatch("city/getgeohash",this.city);
             }
         },
         gosetcity(){
-            this.$router.push("/")
+            //返回上一页
+            this.$router.push("/");
+        },
+        zuobiao(hash){
+            console.log(hash);
+            localStorage.setItem("geohash",hash);
         }
     },
     created(){
@@ -54,9 +59,8 @@ export default {
         //     // this.$store.dispatch("city/getgeohash",i);
         // })
         this.loading=true;
-        // console.log(localStorage.getItem("Id"))
         this.city.city_id=localStorage.getItem("Id");
-        console.log(this.city.city_id);
+        // console.log(this.city.city_id);
         this.$store.dispatch("city/getcityname",this.city.city_id).then(()=>{
             this.loading=false;
         })
