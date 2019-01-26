@@ -313,7 +313,7 @@ export default {
       this.$store.commit("shops_list/delsore");
     },
     next () {
-      this.$router.push("/1")
+      this.$router.push("/")
     }
   },
   created() {
@@ -396,7 +396,6 @@ export default {
 
 .food_container {
   width: 100%;
-  min-width: 750px;
 }
 .food_container .header {
   width: 100%;

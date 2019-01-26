@@ -43,7 +43,8 @@
           >
             <div class="banner">
               <div v-for="(pic, index) in item" :key="index">
-                <router-link :to="'/Index/'+item.id+'&title=甜品饮品&restaurant_category_id=0'"  :href="item.url" >
+                <!-- <router-link to="/food/?geohash=34.79709,113.59965&title=美食&restaurant_category_id=8">甜品饮品</router-link> -->
+                <router-link :to="'/food/?geohash=34.79709,113.59965&title='+pic.title+'&restaurant_category_id=0'"  :href="item.url" >
                   <img :src="'https://fuss10.elemecdn.com/'+pic.image_url">
                   <span class="txt">{{pic.title}}</span>
                 </router-link>
