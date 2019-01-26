@@ -74,7 +74,7 @@ export default [
   },
   // l----路由结束
   {
-    path:"/",
+    path:"/site",
     component:site
   },
   {
@@ -84,10 +84,6 @@ export default [
   {
     path:"/food",
     component:() => import('./views/shops_list.vue')
-  },
-  {
-    path:"/1",
-    component:() => import('./views/demo.vue')
   },
   {
     path:"/forget",

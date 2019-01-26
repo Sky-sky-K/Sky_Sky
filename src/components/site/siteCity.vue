@@ -1,13 +1,9 @@
 <template>
     <div class="container" v-loading="loading">
         <div class="header">
-            <i class="el-icon-arrow-left"></i>
+            <i class="el-icon-arrow-left" @click="prve"></i>
             <span>城市选择</span>
         </div>
-        <!-- <div class="header-serach">
-            <input type="text" class="ipt" v-model="input" placeholder="请输入城市名">
-            <i class="el-icon-search"></i>
-        </div> -->
         <div class="site-city">当前定位城市：<span>{{guesscity}}</span></div>
         <div class="hot-city">
             <p class="hot-head">热门城市</p>
@@ -15,12 +11,6 @@
                 <li v-for="item in hotcity" :key="item.id" @click="gethotId(item.id)">{{item.name}}</li>
             </ul>
         </div>
-        <!-- <div v-for="item in groupcity" :key="item[0]">
-            <span>{{item[0]}}</span>
-            <div v-for="city in item[1]" :key="city.id">
-                {{city.name}}
-            </div>
-        </div> -->
         <div class="box">
             <cube-index-list :data="groupcity" @select="selectItem"></cube-index-list>
         </div>
@@ -94,6 +84,9 @@ export default {
             this.$store.dispatch("city/getcity",type).then(()=>{
                 this.loading=false;
             })
+        },
+        prve () {
+            this.$router.push("/")
         }
     },
     created(){

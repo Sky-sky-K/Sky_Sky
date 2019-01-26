@@ -9,7 +9,7 @@
     >
       <ul>
         <li class="shop_li" v-for="(shop,index) in shops" :key="index" :data-id="shop.id">
-          <router-link :to="'/shop?geohash=34.79709,113.59965&id=' + shop.id">
+          <router-link :to="'/shop?geohash='+$route.query.geohash+'&id=' + shop.id">
             <img :src="'http://elm.cangdu.org/img/'+shop.image_path" alt class="shop_img">
             <div class="shop_right">
               <div class="shop_detail_header flex">

@@ -313,7 +313,7 @@ export default {
       this.$store.commit("shops_list/delsore");
     },
     next () {
-      this.$router.push("/")
+      this.$router.go(-1)
     }
   },
   created() {
