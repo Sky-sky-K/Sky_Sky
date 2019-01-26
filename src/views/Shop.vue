@@ -1,24 +1,37 @@
 <template>
   <div>
-    <div class="shop-head">
-      <img src="http://elm.cangdu.org/img/164ad0b6a3917599.jpg" alt="">
-      <div class="shop-int">
-        <div class="shop-name">效果演示</div>
-        <div class="shop-moddle">商家配送/分钟送达/配送费￥5</div>
-        <div class="shop-affiche">公告:欢迎光临，用餐高峰期请提前下单，谢谢</div>
-      </div>
-    </div>
+    <shop-head></shop-head>
+    <el-tabs v-model="activeName" :stretch="true" class="tabs">
+      <el-tab-pane label="商品" name="first" class="shop">
+        <router-view name="shop"></router-view>
+      </el-tab-pane> 
+      <el-tab-pane label="评价" name="second" class="evaluation">
+        <router-view name="text"></router-view>
+      </el-tab-pane>
+    </el-tabs>
   </div>
 </template>
 
 <script>
+import ShopHead from '../components/shop/Shop-head'
 export default {
-
+  data(){
+    return {
+      activeName:'first'
+    }
+  },
+  created(){
+    console.log(this.$route.query)
+  },
+  components:{
+    ShopHead
+  }
 }
 </script>
 
-<style scope>
-  *{margin:0;padding: 0;font-size: 0.12rem !important;}
-  .shop-head{display: flex;}
-  .shop-head>img{width: 1.45rem;height:1.45rem;}
+<style scoped>
+  *{margin:0;padding: 0;box-sizing: border-box;}
+  .shop{height: 100%;font-size: 12px;padding-bottom: 47px;}
+  .tabs{position: absolute;bottom: 0;left: 0;right: 0;top: 120px;overflow: hidden;}
+  .evaluation{height: 100%;overflow-y: auto;padding-bottom: 40px;}
 </style>
