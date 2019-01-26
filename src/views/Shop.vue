@@ -21,7 +21,7 @@ export default {
     }
   },
   created(){
-    console.log(this.$route.query)
+    this.$store.commit("Shop/setRestaurant_id",this.$route.query.id)
   },
   components:{
     ShopHead
