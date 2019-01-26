@@ -1,6 +1,4 @@
-import { reject } from "q";
-import { resolve } from "url";
-import asios from '../../axios'
+
 import axios from "../../axios";
 
 export default {
