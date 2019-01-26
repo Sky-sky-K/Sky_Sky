@@ -1,10 +1,9 @@
 <template>
   <div>
-    <myheader>
-      <p slot="myheader">{{listinfo[1]}}</p>
-    </myheader>
-    <div class="myservicelist">
-      <p v-html="listinfo[0]"></p>
+    <div class="mylogout">
+      <myheader>
+        <p slot="myheader">账户信息</p>
+      </myheader>
     </div>
   </div>
 </template>
@@ -15,11 +14,6 @@ export default {
   components: {
     myheader
   },
-  computed: {
-    listinfo() {
-      return this.$store.state.myservice.listinfo;
-    }
-  }
 };
 </script>
 
@@ -29,10 +23,11 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-.myservicelist {
+.mydownload {
   padding-top: 44px;
   width: 100vw;
   height: 100vh;
-  background: #fff;
+  background: #f5f5f5;
+  text-align: center;
 }
 </style>

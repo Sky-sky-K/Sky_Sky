@@ -3,7 +3,7 @@
     <myheader>
       <p slot="myheader">服务中心</p>
     </myheader>
-    <div class="myservice">
+    <div class="myservice"  v-loading="loading">
       <div class="service_connect">
         <div class="service_left">
           <svg viewBox="0 0 46 46" id="human" width="22" height="23">
@@ -45,6 +45,11 @@
 <script>
 import myheader from "./myheader";
 export default {
+  data(){
+    return {
+      loading:true
+    }
+  },
   components: {
     myheader
   },
@@ -54,7 +59,9 @@ export default {
     }
   },
   created(){
-    this.$store.dispatch("myservice/getData");
+    this.$store.dispatch("myservice/getData").then(()=>{
+      this.loading=false;
+    });
   },
   methods:{
     changelist(val){
