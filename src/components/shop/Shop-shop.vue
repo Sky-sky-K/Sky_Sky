@@ -61,7 +61,7 @@
       class="nav"
       :side="true"
       :data="shopsData"
-      :current="current"
+      :current="current1"
       @change="changeHandler"
       @sticky-change="stickyChangeHandler">
       <cube-scroll-nav-panel
@@ -112,7 +112,6 @@
 export default {
   data() {
     return {
-      current: 2306,
       popups:null,
       popupIndex:0,
       shopCarList:false
@@ -124,6 +123,9 @@ export default {
     }
   },
   computed:{
+    current1(){
+      return this.$store.state.Shop.current1
+    },
     shopsData(){
       return this.$store.state.Shop.shops
     },

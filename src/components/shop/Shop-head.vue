@@ -1,10 +1,10 @@
 <template>
   <div class="header">
       <div class="shop-bg-img">
-        <img src="http://elm.cangdu.org/img/164ad0b6a3917599.jpg" alt="">
+        <img :src="'http://elm.cangdu.org/img/'+shopHead.image_path" alt="">
       </div>
     <div class="shop-head">
-      <img src="http://elm.cangdu.org/img/164ad0b6a3917599.jpg" alt="">
+      <img :src="'http://elm.cangdu.org/img/'+shopHead.image_path" alt="">
       <div class="shop-int">
         <h4 class="shop-name">{{shopHead.name}}</h4>
         <div class="shop-moddle">商家配送/分钟送达/配送费￥5</div>
@@ -38,7 +38,7 @@ export default {
 
 <style scope>
   .header{height: 120px;overflow: hidden;position:relative;background: rgba(119,103,137,.43);padding: 10px !important;}
-  .shop-bg-img{position:absolute;top: 0;left: 0;z-index: -999;}
+  .shop-bg-img{position:absolute;top: 0;left: 0;z-index: -999;width: 100%;}
   .shop-bg-img img{width: 100%;filter: blur(10px)}
   .shop-head{display: flex;justify-content: space-between;}
   .shop-head>img{width: 68px;height: 68px;margin-right: 10px;}

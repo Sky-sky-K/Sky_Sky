@@ -17,9 +17,10 @@ const shopCarY_Push = ((food_id,shop_id,goods_id,item_id,num,food_obj) => {
 export default {
   namespaced:true,
   state: {
+    current1:2306,
     shops:[],
     foodShopCar:null,
-    restaurant_id:1,
+    restaurant_id:null,
     shopCarNum:0,
     shopCarY:[],
     totalPrice:0,
@@ -29,14 +30,16 @@ export default {
     evaluations:[]
   },
   mutations: {
+    setCurrent(state, current1){
+      state.current1 = current1
+    },
     getShopCar(state){
-      // console.log(JSON.parse(localStorage.getItem("foodObj")))
+      state.shopCarY = []       //进入店铺初始化数据
+      state.shopCarNum = 0      //进入店铺初始化数据
+      state.totalPrice = 0      //进入店铺初始化数据
       state.foodShopCar = JSON.parse(localStorage.getItem("foodObj"))
       const getShop = ((data) => {
         for(let key in data){
-          if(!key == state.restaurant_id){
-            return
-          }
           if(!data[key].num){
             getShop(data[key])
           }else{
@@ -55,7 +58,11 @@ export default {
           }
         }
       })
-      getShop(state.foodShopCar)
+      for(let key in state.foodShopCar){
+        if(key == state.restaurant_id){
+          getShop(state.foodShopCar[state.restaurant_id])
+        }
+      }
     },
     getShop(state, shops){
       state.shops = shops
@@ -249,7 +256,6 @@ export default {
     },
     setEvaluation(state, data){
       state.evaluations = data
-      console.log(state.evaluations)
     }
   },
   actions: {
@@ -257,14 +263,14 @@ export default {
       axios.get('/shopping/v2/menu',{params:{
         restaurant_id:state.restaurant_id
       }}).then(res => {
+        commit("setCurrent",res.data[0].id)
         commit("getShop",res.data)
-        commit('setRestaurant_id',1)
+        commit('setRestaurant_id',state.restaurant_id)
       })
     },
     getshopHead({commit, state}){
       axios.get('/shopping/restaurant/'+state.restaurant_id).then(res => {
         commit('setShopHead',res.data)
-        // console.log(res)
       })
     },
     getRating({commit, state}){
